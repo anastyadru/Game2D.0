@@ -1,3 +1,6 @@
+// Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +12,20 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
 
-    void Start()
+    public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Finish"))
+        {
+            ResetGame();
+        }
+    }
+    
+    public void Update()
     {
         if (transform.position.y < -10)
         {
@@ -22,20 +33,11 @@ public class PlayerController : MonoBehaviour
         }
         
         transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
-
         if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.05f)
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Finish"))
-        {
-            ResetGame();
-        }
-    }
-
-    void ResetGame()
+    public void ResetGame()
     {
         transform.position = new Vector3(-8.05f, 0.5f, 0);
     }

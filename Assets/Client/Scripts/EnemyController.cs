@@ -1,3 +1,5 @@
+// Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,22 +8,51 @@ public class EnemyController : MonoBehaviour
 {
     private Rigidbody2D physic;
     public Transform player;
+    
     public float speed;
     public float agroDistance;
+    
     public Transform leftPoint;
     public Transform rightPoint;
     
     private bool movingRight = true;
 
-    void Start()
+    public void Start()
     {
         physic = GetComponent<Rigidbody2D>();
     }
+
+    public void StartHunting()
+    {
+        if (player.position.x < transform.position.x)
+        {
+            physic.velocity = new Vector2(-speed, 0);
+            transform.localScale = new Vector2(0.5f, 0.5f);
+        }
+        else if (player.position.x > transform.position.x)
+        {
+            physic.velocity = new Vector2(speed, 0);
+            transform.localScale = new Vector2(-0.5f, 0.5f);
+        }
+    }
+
+    public void StartPatrolling()
+    {
+        if (movingRight)
+        {
+            physic.velocity = new Vector2(speed, 0);
+            transform.localScale = new Vector2(-0.5f, 0.5f);
+        }
+        else
+        {
+            physic.velocity = new Vector2(-speed, 0);
+            transform.localScale = new Vector2(0.5f, 0.5f);
+        }
+    }
     
-    void Update()
+    public void Update()
     {
         float distToPlayer = Vector2.Distance(transform.position, player.position);
-
         if (distToPlayer < agroDistance)
         {
             StartHunting();
@@ -46,34 +77,6 @@ public class EnemyController : MonoBehaviour
                 movingRight = true;
                 transform.localScale = new Vector2(0.5f, 0.5f);
             }
-        }
-    }
-
-    void StartHunting()
-    {
-        if (player.position.x < transform.position.x)
-        {
-            physic.velocity = new Vector2(-speed, 0);
-            transform.localScale = new Vector2(0.5f, 0.5f);
-        }
-        else if (player.position.x > transform.position.x)
-        {
-            physic.velocity = new Vector2(speed, 0);
-            transform.localScale = new Vector2(-0.5f, 0.5f);
-        }
-    }
-
-    void StartPatrolling()
-    {
-        if (movingRight)
-        {
-            physic.velocity = new Vector2(speed, 0);
-            transform.localScale = new Vector2(-0.5f, 0.5f);
-        }
-        else
-        {
-            physic.velocity = new Vector2(-speed, 0);
-            transform.localScale = new Vector2(0.5f, 0.5f);
         }
     }
 }
