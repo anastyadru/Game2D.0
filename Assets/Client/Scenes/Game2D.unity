@@ -359,7 +359,7 @@ Transform:
   - {fileID: 1231449007}
   - {fileID: 1625997708}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &248489300
 GameObject:
@@ -1017,7 +1017,7 @@ RectTransform:
   m_Children:
   - {fileID: 306227169}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1116,7 +1116,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6371730404072404128, guid: 11e6193851e369e49bffa05f9a2deca3, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6371730404072404128, guid: 11e6193851e369e49bffa05f9a2deca3, type: 3}
       propertyPath: m_LocalScale.x
@@ -1463,7 +1463,7 @@ Transform:
   m_LocalScale: {x: 0.45, y: 0.4, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1465902556
 GameObject:
@@ -1658,7 +1658,7 @@ Transform:
   - {fileID: 343933640}
   - {fileID: 523082847}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1609796660
 GameObject:
@@ -1752,7 +1752,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6371730404072404128, guid: 11e6193851e369e49bffa05f9a2deca3, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6371730404072404128, guid: 11e6193851e369e49bffa05f9a2deca3, type: 3}
       propertyPath: m_LocalScale.x
@@ -2121,7 +2121,7 @@ RectTransform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2487,7 +2487,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2060200616
 Rigidbody2D:
@@ -2622,7 +2622,7 @@ Transform:
   m_LocalScale: {x: 0.45, y: 0.4, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2088444765
 BoxCollider2D:
