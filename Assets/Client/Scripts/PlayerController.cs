@@ -24,14 +24,12 @@ public class PlayerController : MonoBehaviour
     
     public void Update()
     {
-        if (transform.position.y < -10)
-        {
-            ResetGame();
-        }
-        
         transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.05f)
+        {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        }
     }
 
     public void ResetGame()
