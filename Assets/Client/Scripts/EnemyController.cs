@@ -22,61 +22,46 @@ public class EnemyController : MonoBehaviour
         physic = GetComponent<Rigidbody2D>();
     }
 
-    public void StartHunting()
-    {
-        if (player.position.x < transform.position.x)
-        {
-            physic.velocity = new Vector2(-speed, 0);
-            transform.localScale = new Vector2(0.5f, 0.5f);
-        }
-        else if (player.position.x > transform.position.x)
-        {
-            physic.velocity = new Vector2(speed, 0);
-            transform.localScale = new Vector2(-0.5f, 0.5f);
-        }
-    }
-
-    public void StartPatrolling()
-    {
-        if (movingRight)
-        {
-            physic.velocity = new Vector2(speed, 0);
-            transform.localScale = new Vector2(-0.5f, 0.5f);
-        }
-        else
-        {
-            physic.velocity = new Vector2(-speed, 0);
-            transform.localScale = new Vector2(0.5f, 0.5f);
-        }
-    }
-    
-    public void Update()
+    private void Update()
     {
         float distToPlayer = Vector2.Distance(transform.position, player.position);
         if (distToPlayer < agroDistance)
         {
-            StartHunting();
+            Hunt();
         }
         else
         {
-            StartPatrolling();
+            Patrol();
         }
         
-        if (movingRight)
+        CheckBounds();
+    }
+
+    private void Hunt()
+    {
+        Vector2 direction = (player.position.x < transform.position.x) ? Vector2.left : Vector2.right;
+        physic.velocity = direction * speed;
+        transform.localScale = new Vector2(direction.x == -1 ? 0.5f : -0.5f, 0.5f);
+    }
+
+    private void Patrol()
+    {
+        Vector2 direction = movingRight ? Vector2.right : Vector2.left;
+        physic.velocity = direction * speed;
+        transform.localScale = new Vector2(movingRight ? -0.5f : 0.5f, 0.5f);
+    }
+
+    private void CheckBounds()
+    {
+        if (movingRight && transform.position.x >= rightPoint.position.x)
         {
-            if (transform.position.x >= rightPoint.position.x)
-            {
-                movingRight = false;
-                transform.localScale = new Vector2(-0.5f, 0.5f);
-            }
+            movingRight = false;
+            transform.localScale = new Vector2(-0.5f, 0.5f);
         }
-        else
+        else if (!movingRight && transform.position.x <= leftPoint.position.x)
         {
-            if (transform.position.x <= leftPoint.position.x)
-            {
-                movingRight = true;
-                transform.localScale = new Vector2(0.5f, 0.5f);
-            }
+            movingRight = true;
+            transform.localScale = new Vector2(0.5f, 0.5f);
         }
     }
 }
