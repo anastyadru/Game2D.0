@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Finish"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Finish") || transform.position.y < -10)
         {
             ResetGame();
         }
