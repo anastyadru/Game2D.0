@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Finish") || transform.position.y < -10)
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Finish"))
         {
             ResetGame();
         }
@@ -24,12 +24,14 @@ public class PlayerController : MonoBehaviour
     
     public void Update()
     {
-        transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.05f)
+        if (transform.position.y < -10)
         {
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            ResetGame();
         }
+        
+        transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.05f)
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
 
     public void ResetGame()
