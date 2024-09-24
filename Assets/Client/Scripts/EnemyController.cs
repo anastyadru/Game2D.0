@@ -46,9 +46,10 @@ public class EnemyController : MonoBehaviour
     private void Patrol()
     {
         Vector2 direction = movingRight ? Vector2.right : Vector2.left;
-        physic.velocity = direction * speed;
-        transform.localScale = new Vector2(movingRight ? -0.5f : 0.5f, 0.5f);
+        UpdateMovement(direction);
     }
+    
+    
 
     private void CheckBounds()
     {
