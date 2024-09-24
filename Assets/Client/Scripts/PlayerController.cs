@@ -29,11 +29,17 @@ public class PlayerController : MonoBehaviour
             EndGame();
         }
         
-        transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
+        MovePlayer();
+        
         if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.05f)
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
+    }
+    
+    private void MovePlayer()
+    {
+        transform.position += Vector3.right * speed * Time.deltaTime;
     }
 
     public void EndGame()
