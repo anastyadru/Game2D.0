@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Finish"))
         {
-            ResetGame();
+            EndGame();
         }
     }
     
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ResetGame()
+    public void EndGame()
     {
         transform.position = new Vector3(-8.05f, 0.5f, 0);
     }
