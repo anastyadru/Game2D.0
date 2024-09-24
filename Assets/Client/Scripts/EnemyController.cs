@@ -49,7 +49,11 @@ public class EnemyController : MonoBehaviour
         UpdateMovement(direction);
     }
     
-    
+    private void UpdateMovement(Vector2 direction)
+    {
+        physic.velocity = direction * speed;
+        transform.localScale = new Vector2(direction.x == -1 ? 0.5f : -0.5f, 0.5f);
+    }
 
     private void CheckBounds()
     {
