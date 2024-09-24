@@ -57,15 +57,10 @@ public class EnemyController : MonoBehaviour
 
     private void CheckBounds()
     {
-        if (movingRight && transform.position.x >= rightPoint.position.x)
+        if ((movingRight && transform.position.x >= rightPoint.position.x) || (!movingRight && transform.position.x <= leftPoint.position.x))
         {
-            movingRight = false;
-            transform.localScale = new Vector2(-0.5f, 0.5f);
-        }
-        else if (!movingRight && transform.position.x <= leftPoint.position.x)
-        {
-            movingRight = true;
-            transform.localScale = new Vector2(0.5f, 0.5f);
+            movingRight = !movingRight;
+            transform.localScale = new Vector2(movingRight ? -0.5f : 0.5f, 0.5f);
         }
     }
 }
