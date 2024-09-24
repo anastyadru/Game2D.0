@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
         float distToPlayer = Vector2.Distance(transform.position, player.position);
         if (distToPlayer < agroDistance)
         {
-            Hunt();
+            MoveTowardsPlayer();
         }
         else
         {
@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
         CheckBounds();
     }
 
-    private void Hunt()
+    private void MoveTowardsPlayer()
     {
         Vector2 direction = (player.position.x < transform.position.x) ? Vector2.left : Vector2.right;
         physic.velocity = direction * speed;
