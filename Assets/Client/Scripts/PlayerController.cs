@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         
         MovePlayer();
         
-        if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.05f)
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
