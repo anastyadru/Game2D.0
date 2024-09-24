@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             Jump();
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
     }
     
@@ -46,6 +45,11 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         return Mathf.Abs(rb.velocity.y) < 0.05f;
+    }
+    
+    private void Jump()
+    {
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     public void EndGame()
