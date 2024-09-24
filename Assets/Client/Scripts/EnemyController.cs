@@ -40,8 +40,7 @@ public class EnemyController : MonoBehaviour
     private void MoveTowardsPlayer()
     {
         Vector2 direction = (player.position.x < transform.position.x) ? Vector2.left : Vector2.right;
-        physic.velocity = direction * speed;
-        transform.localScale = new Vector2(direction.x == -1 ? 0.5f : -0.5f, 0.5f);
+        UpdateMovement(direction);
     }
 
     private void Patrol()
