@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.y < -10)
         {
-            ResetGame();
+            EndGame();
         }
         
         transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
