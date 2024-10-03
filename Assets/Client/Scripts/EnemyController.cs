@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     private Rigidbody2D physic;
+    private Transform myTransform;
     public Transform player;
     
     public float speed;
@@ -16,10 +17,11 @@ public class EnemyController : MonoBehaviour
     public Transform rightPoint;
     
     private bool movingRight = true;
-
-    public void Start()
+    
+    public void Awake()
     {
         physic = GetComponent<Rigidbody2D>();
+        myTransform = transform;
     }
 
     private void Update()
@@ -39,7 +41,7 @@ public class EnemyController : MonoBehaviour
 
     private void MoveTowardsPlayer()
     {
-        Vector2 direction = (player.position.x < transform.position.x) ? Vector2.left : Vector2.right;
+        Vector2 direction = (player.position.x < myTransform.position.x) ? Vector2.left : Vector2.right;
         UpdateMovement(direction);
     }
 
@@ -52,15 +54,15 @@ public class EnemyController : MonoBehaviour
     private void UpdateMovement(Vector2 direction)
     {
         physic.velocity = direction * speed;
-        transform.localScale = new Vector2(direction.x == -1 ? 0.5f : -0.5f, 0.5f);
+        myTransform.localScale = new Vector2(direction.x == -1 ? 0.5f : -0.5f, 0.5f);
     }
 
     private void CheckBounds()
     {
-        if ((movingRight && transform.position.x >= rightPoint.position.x) || (!movingRight && transform.position.x <= leftPoint.position.x))
+        if ((movingRight && myTransform.position.x >= rightPoint.position.x) || (!movingRight && myTransform.position.x <= leftPoint.position.x))
         {
             movingRight = !movingRight;
-            transform.localScale = new Vector2(movingRight ? -0.5f : 0.5f, 0.5f);
+            myTransform.localScale = new Vector2(movingRight ? -0.5f : 0.5f, 0.5f);
         }
     }
 }
