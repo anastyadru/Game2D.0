@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5;
 
     private Rigidbody2D rb;
+    private Transform myTransform;
 
-    public void Start()
+    public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        myTransform = transform;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
     
     public void Update()
     {
-        if (transform.position.y < -10)
+        if (myTransform.position.y < -10)
         {
             EndGame();
         }
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
     
     private void MovePlayer()
     {
-        transform.position += Vector3.right * speed * Time.deltaTime;
+        myTransform.position += Vector3.right * speed * Time.deltaTime;
     }
 
     private void Jump()
@@ -49,6 +51,6 @@ public class PlayerController : MonoBehaviour
 
     public void EndGame()
     {
-        transform.position = new Vector3(-8.05f, 0.5f, 0);
+        myTransform.position = new Vector3(-8.05f, 0.5f, 0);
     }
 }
